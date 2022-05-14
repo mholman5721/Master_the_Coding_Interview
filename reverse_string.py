@@ -44,6 +44,43 @@ def reverse_2(str):
         str = str[:((length - 1) - i)] + a + str[((length - 1) - i)+1:]
     return str
 
+def reverse_3(str):
+    str = list(str)
+    length = len(str)
+    for i in range(0, length//2):
+        temp = str[i]
+        str[i] = str[((length - 1) - i)]
+        str[((length - 1) - i)] = temp
+    return "".join(str)
+
+def reverse_3(str):
+    str = list(str)
+    length = len(str)
+    for i in range(0, length//2):
+        temp = str[i]
+        str[i] = str[((length - 1) - i)]
+        str[((length - 1) - i)] = temp
+    return "".join(str)
+
+def reverse_4(str):
+    str = list(str)
+    length = len(str)
+    for i in range(0, length//2):
+        str[i] = ord(str[i]) ^ ord(str[((length - 1) - i)])
+        str[((length - 1) - i)] = chr(ord(str[((length - 1) - i)]) ^ ord(str[i]))
+        str[i] = chr(ord(str[i]) ^ ord(str[((length - 1) - i)]))
+    return "".join(str)
+
+def reverse_5(str):
+    return list(str).reverse().join(str)
+
+# a 10110111
+# b 01110110
+# ^ 11000001
+# a = a ^ b = 10110111 ^ 01110110 = 11000001
+# b = b ^ a = 01110110 ^ 11000001 = 10110111
+# a = a ^ b = 11000001 ^ 10110111 = 01110110
+
 str1 = "Hello My Name Is Matthew"
 rstr1 = reverse_1(str1)
 print(rstr1)
@@ -51,3 +88,23 @@ print(rstr1)
 str2 = "Hello My Name Is Matthew"
 rstr2 = reverse_2(str2)
 print(rstr2)
+
+str3 = "Hello My Name Is Matthew"
+rstr3 = reverse_2(str3)
+print(rstr3)
+
+str4 = "Hello My Name Is Matthew"
+rstr4 = reverse_2(str4)
+print(rstr4)
+
+str5 = "Hello My Name Is Matthew"
+rstr5 = reverse_2(str5)
+print(rstr5)
+
+str6 = "Hello My Name Is Matthew"
+rstr6 = (lambda a : "".join(reversed(a)))(str6)
+print(rstr6)
+
+str7 = "Hello My Name Is Matthew"
+rstr7 = str7[::-1]
+print(rstr7)
