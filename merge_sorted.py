@@ -1,7 +1,7 @@
 from decimal import Clamped
 
 
-def mergeSortedArrays(arr1, arr2):
+def mergeSortedArrays1(arr1, arr2):
     merged = []
 
     i = 0
@@ -22,10 +22,9 @@ def mergeSortedArrays(arr1, arr2):
 
     return merged
 
-arr1 = [0, 3, 4, 31, 32, 33]
-arr2 = [4, 6, 30, 64, 65, 66, 67, 68, 69, 70]
-# [0, 3, 4, 4, 6, 30, 31]
+arr1 = [1, 2, 3, 4, 5, 6]
+arr2 = [7]
 
-sorted = mergeSortedArrays(arr1, arr2)
+sorted1 = mergeSortedArrays1(arr1, arr2)
 
-print(sorted)
+print(sorted1)
