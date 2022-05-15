@@ -8,7 +8,14 @@ class HashTable:
         return hash
     def set(self, key, value):
         hash = self._hash(key)
-        self.data[hash].append((key, value))
+        for i, item in enumerate(self.data[hash]):
+            if item[0] == key:
+                self.data[hash][i] = (key, value)
+                break
+            else:
+                self.data[hash].append((key, value))
+        if len(self.data[hash]) == 0:
+            self.data[hash].append((key, value))
     def get(self, key):
         retVal = []
         hash = self._hash(key)
