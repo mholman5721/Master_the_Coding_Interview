@@ -101,3 +101,10 @@ string = "Matthew"
 
 for i in range(len(string)-1, 0-1, -1):
     print(string[i])
+
+print("-------------")
+
+if None:
+    print("None is True")
+else:
+    print("None is False")
