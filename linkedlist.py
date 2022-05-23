@@ -1,23 +1,23 @@
-class Node:
+class DoubleNode:
     def __init__(self, value) -> None:
         self.value = value
         self.next = None
         self.prev = None
 
-class LinkedList:
+class DoublyLinkedList:
     def __init__(self, value) -> None:
-        self.head = Node(value)
+        self.head = DoubleNode(value)
         self.tail = self.head
         self.length = 1
     def append(self, value):
-        newNode = Node(value)
+        newNode = DoubleNode(value)
         self.tail.next = newNode
         newNode.prev = self.tail
         self.tail = self.tail.next
         self.length += 1
         return self
     def prepend(self, value):
-        newNode = Node(value)
+        newNode = DoubleNode(value)
         newNode.next = self.head
         self.head.prev = newNode
         self.head = self.head.prev
@@ -27,9 +27,9 @@ class LinkedList:
         # a b c d
         # insert X at location 2
         # a b X c d
-        newNode = Node(value)
+        newNode = DoubleNode(value)
         ptr = self.head
-        if location >= self.length:
+        if location >= self.length-1:
             self.append(value)
         elif location <= 0:
             self.prepend(value)
@@ -46,10 +46,20 @@ class LinkedList:
         # remove X at location 2
         # a b c d
         ptr = self.head
-        if location >= self.length:
-            return -1
+        if location >= self.length-1:
+            delNode = self.tail
+            self.tail = self.tail.prev
+            delNode.prev = None
+            self.tail.next = None
+            del delNode
+            self.length -= 1
         elif location <= 0:
-            return -2
+            delNode = self.head
+            self.head = self.head.next
+            delNode.next = None
+            self.head.prev = None
+            del delNode
+            self.length -= 1
         else:
             ptr = self._findLocation(location, ptr)
             delNode = ptr.next
@@ -80,7 +90,7 @@ class LinkedList:
         print(output)
 
 
-myLinkedList = LinkedList(1)
+myLinkedList = DoublyLinkedList(1)
 myLinkedList.append(2)
 myLinkedList.append(3)
 myLinkedList.append(4)
@@ -92,7 +102,7 @@ myLinkedList.insert(2, 99)
 
 myLinkedList.printContentsForward()
 
-print(myLinkedList.remove(2))
+myLinkedList.remove(2)
 
 myLinkedList.printContentsForward()
 myLinkedList.printContentsReverse()
